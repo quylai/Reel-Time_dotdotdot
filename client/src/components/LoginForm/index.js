@@ -25,7 +25,7 @@ class LoginForm extends Component {
 		API.checkUser(this.state.username, this.state.password)
 			.then(results => {
 
-				// temp. comm.
+				// temporarily comments out
 				//----
 				// document.cookie = `token = ${results.data.token}`;
 				// document.cookie = `id = ${results.data.user.id}`;

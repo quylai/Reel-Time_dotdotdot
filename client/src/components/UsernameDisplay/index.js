@@ -5,9 +5,9 @@ const UsernameDisplay = () => {
 
 	// parsing username from document.cookie, document.cookie is defined in
 	// client\src\components\LoginForm\index.js
-	let temp = document.cookie.search("name=");
-	let uNameArray = document.cookie.substring(temp+5).split(";");
-	let uName = uNameArray[0];
+	let start = document.cookie.search("username");
+	let arr = document.cookie.substring(start).split("\"");
+	let uName = arr[2];
 
 	return(
 		<div>
