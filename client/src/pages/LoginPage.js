@@ -14,21 +14,21 @@ class LoginPage extends Component {
 
   render() {
 
-    return (
-        <div>
-            <BackgroundVideo />
-            <LoginCard>
-            <div className="page-header">
-              <Logo></Logo>
-              <div className="titles">
-                <Title title={this.state.title} id="loginTitle" />
-                <p id="loginSlogan">The app that makes your date</p>
-              </div>
+    return(
+      <div>
+        <BackgroundVideo />
+        <LoginCard>
+          <div className="page-header">
+            <Logo></Logo>
+            <div className="titles">
+              <Title title={this.state.title} id="loginTitle" />
+              <p id="loginSlogan">The app that makes your date</p>
             </div>
+          </div>
 
-            <LoginForm></LoginForm>
-            </LoginCard>
-        </div>
+          <LoginForm></LoginForm>
+        </LoginCard>
+      </div>
     );
   }
 }
