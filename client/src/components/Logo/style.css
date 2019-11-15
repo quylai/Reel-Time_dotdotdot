@@ -1,0 +1,12 @@
+.logo-container {
+    position: relative;
+}
+
+img {
+    width: 125px;
+    margin: 20px 0;
+}
+
+.spacer {
+    flex: 1; /* This will take all available space */
+}

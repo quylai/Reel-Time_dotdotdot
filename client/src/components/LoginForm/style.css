@@ -1,0 +1,54 @@
+#username {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#password {
+    width:100%;
+    margin: 0 auto;
+}
+
+.formErrors {
+    color: red;
+    font-size: 1em;
+}
+
+.formErrors p {
+    margin-bottom: 0;
+}
+
+form {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.button-container {
+    text-align: center;
+}
+
+#login_btn, #new-user{
+    width: 200px;
+    padding: 10px 20px;
+    margin: 10px auto 0 auto;
+    background-color: #c3666b;
+    border: 0;
+    color: #ffffff;
+}
+
+#login_btn:hover, #new-user:hover{
+    background-color: #a4494e;;
+}
+
+#login_btn {
+    margin-right: 10px;
+}
+
+#new-user {
+    margin-left: 10px;
+}
+
+#authError {
+    color: #c3666b;
+    font-weight: 600;
+    font-style: italic;
+}

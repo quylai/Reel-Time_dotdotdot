@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 30px;
+}
+
+/* Login Page */
+.title-text, #loginSlogan {
+  font-style: italic;
+  text-align: right;
+}
+@media (min-width: 1100px) {
+  .username-text{
+    text-align: right !important;
+  }
+}
+.title-div {
+  text-align:right;
+}
+
+#loginSlogan { 
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Saved Reel Page */
+li {
+  list-style-type: none; 
+}
+
+ul.buttons,
+ul.list-group {
+  list-style-type: none;
+  padding-bottom: 30px;
+}
+
+.back-to-dashboard {
+  text-align: center;
+}
+
+/* #replay-button:hover,
+#share-button:hover,
+#delete-button:hover {
+  filter: brightness(100%);
+} */
+
+
+/* New Reel Page */
+.button-section {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+#save-and-watch-button {
+  margin-left: 33px;
+}
+
+#reReel {
+  width: 300px;
+  padding: 10px 20px;
+  margin-top: 30px;
+  margin-left: 33px;
+  background-color: #cf323a;
+  border: 0;
+  color: #ffffff;
+}
+
+#back-to-dash-button:hover,
+#save-and-watch-button:hover,
+#reReel:hover {
+  filter: brightness(150%);
+}
+
+
+#dice {
+  margin: 5px;
+}

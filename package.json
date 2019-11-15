@@ -1,0 +1,56 @@
+{
+  "name": "reeltime",
+  "version": "1.0.0",
+  "description": "A date night generator",
+  "engines": {
+    "node": "v11.13.0"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node -r esm server.js",
+    "start:dev": "concurrently \"nodemon -r esm --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "if-env": "^1.0.4",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "mysql2": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.11.0",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-dom": "^16.11.0",
+    "react-moment": "^0.9.6",
+    "react-router-dom": "^5.1.2",
+    "react-select": "^3.0.8",
+    "react-star-rating-component": "^1.4.1",
+    "react-strap": "0.0.1",
+    "react-video-cover": "^1.2.2",
+    "reactstrap": "^8.1.1",
+    "redux": "^4.0.4",
+    "sequelize": "^5.19.7"
+  }
+}

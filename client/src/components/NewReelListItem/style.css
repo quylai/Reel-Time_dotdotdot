@@ -1,0 +1,68 @@
+.new-reel-content {
+    margin-top: 30px;
+    min-height: 640px;
+    padding: 15px;
+    background: rgb(248, 237, 237);
+}
+
+.movie-image {
+    float: left;
+    margin: 0 40px 0 0;
+    width: 230px;       
+    height: 280px;
+}
+
+.movie-data {
+    margin-bottom: 15px;
+    overflow-y: scroll;
+}
+
+.movie-description {
+    margin-bottom: 15px;
+    overflow-y: scroll;
+    height: 150px;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.movie-buttons {
+    width: 50%;
+}
+
+.movie-title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.movie-data span,
+.recipe-data span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.recipe-image {
+    float: left;
+    margin: 0 40px 0 0;
+    width: 230px;
+}
+
+.recipe-title {
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.recipe-link a {
+    color: rgb(209, 94, 104);
+    font-weight: bolder;
+}
+
