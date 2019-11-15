@@ -1,6 +1,6 @@
 // API calls below.
 import axios from "axios";
-import { parseDocCookie } from "./parseDocCookie.js";
+import { parseDocCookie } from "./parseDocCookie";
 
 // extracting token
 let userTokenValue = parseDocCookie("token");

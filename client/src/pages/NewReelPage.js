@@ -10,6 +10,7 @@ import SaveAndWatchButton from "../components/SaveAndWatchButton";
 import StreamingService from "../components/StreamingService";
 import { Button } from "reactstrap";
 import API from "../utils/API";
+import { parseDocCookie } from "../utils/parseDocCookie";
 
 var movie;
 var recipe;
@@ -41,25 +42,18 @@ class NewReelPage extends Component {
 	
 	handleButtonClick() {
 		this.setState({isButtonClicked: true});
-
-		var allCookies = document.cookie.split(";");
-		var userId = allCookies[1].split("=");
-		var userIdValue = userId[1];
-		var userIdInt = parseInt(userIdValue);
+		let userIdInt = parseDocCookie("id");
 		
-
 		var reelObj = { 
-				movieTitle: movie.title,
-				movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-				movieSynopsis: movie.overview,
-				recipeTitle: recipe.recipe.label, 
-				recipeImage: recipe.recipe.image,
-				recipeLink: recipe.recipe.url,
-				rating: 1,
-				userId: userIdInt
+			movieTitle: movie.title,
+			movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+			movieSynopsis: movie.overview,
+			recipeTitle: recipe.recipe.label, 
+			recipeImage: recipe.recipe.image,
+			recipeLink: recipe.recipe.url,
+			rating: 1,
+			userId: userIdInt
 		};
-
-		console.log(reelObj.userId);
 
 		API.saveReel(reelObj.movieTitle, reelObj.movieImage, reelObj.movieSynopsis, reelObj.recipeTitle, reelObj.recipeImage, reelObj.recipeLink, reelObj.rating, reelObj.userId)
 		.then(results => {

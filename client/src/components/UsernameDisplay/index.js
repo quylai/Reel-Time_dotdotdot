@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
-import { parseDocCookie } from "../../utils/parseDocCookie.js"
+import { parseDocCookie } from "../../utils/parseDocCookie"
 
 const UsernameDisplay = () => {
-	
+
 	let uName = parseDocCookie("username");
 	return(
 		<div>
