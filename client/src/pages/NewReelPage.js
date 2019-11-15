@@ -121,7 +121,6 @@ class NewReelPage extends Component {
 			});
 	}
 
-	
 	render() {
 
 			const isButtonClicked = this.state.isButtonClicked;

@@ -1,10 +1,9 @@
 // API calls below.
 import axios from "axios";
+import { parseDocCookie } from "./parseDocCookie.js";
 
 // extracting token
-let start = document.cookie.search("token");
-let arr = document.cookie.substring(start).split("\"");
-let userTokenValue = arr[2];
+let userTokenValue = parseDocCookie("token");
 
 export default {
 
