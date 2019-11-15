@@ -14,6 +14,9 @@ sample cookie recorded, after login, @ /dashboard; use this for future reference
 {"data":{"user":{"id":4,"username":"dddd","email":"dddd@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJkZGRkIiwiZW1haWwiOiJkZGRkQGdtYWlsLmNvbSIsImlhdCI6MTU3Mzc5NzY1OX0.BnkQLNIXEUq1EbK4sfLuFU29NKLKpxMIdHeF_R6XTvY"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json
 
 //---------------------------------------------------------------------------------
+after "SAVE + WATCH" button clicked on /new-reel
+
+{"data":{"user":{"id":2,"username":"bbbb","email":"bbbb@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJiYmJiIiwiZW1haWwiOiJiYmJiQGdtYWlsLmNvbSIsImlhdCI6MTU3MzgxNDcyOH0.8GoeMIdhy8ka0nE9lsXMDPBNzMb5QWPn_e3MrIw9WRs"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json; genre=80; cuisineType=central-europe
 
 
 
