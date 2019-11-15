@@ -37,8 +37,6 @@ class LoginForm extends Component {
 			));
 	}
 
-	
-
 	createUser = (event) => {
 		event.preventDefault();
 		window.location.pathname = "/new-user";
@@ -83,9 +81,9 @@ class LoginForm extends Component {
 							>LOG IN
 						</Button>
 						<Button
-								onClick={this.createUser}
-								id="new-user"
-								>NEW USER
+							onClick={this.createUser}
+							id="new-user"
+							>NEW USER
 						</Button>
 					</div>
 				</Form>
