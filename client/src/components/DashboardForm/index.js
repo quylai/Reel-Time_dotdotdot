@@ -25,11 +25,11 @@ class DashboardForm extends Component {
     event.preventDefault();
     // this is the function for searching for a movie
     this.movieSearch().then(() => {
-      document.cookie = `genre = ${this.state.valueMovie}`
+      document.cookie = `"genre" = "${this.state.valueMovie}"`
 
         // this is the function for searching for a recipe
       this.recipeSearch().then(() => {
-        document.cookie = `cuisineType = ${this.state.valueCuisine}`
+        document.cookie = `"cuisineType" = "${this.state.valueCuisine}"`
 
         window.location.pathname = '/new-reel'
       });
