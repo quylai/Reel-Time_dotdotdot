@@ -1,6 +1,18 @@
 
 initialize, from repo - https://github.com/seanbelverstone/Reel-Time,
 at commit 5c0446f, 111119-1026
+
+//---------------------------------------------------------------------------------
+sample cookie recorded, after login, @ /dashboard; use this for future reference 
+
+{"data":{"user":{"id":2,"username":"bbbb","email":"bbbb@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJiYmJiIiwiZW1haWwiOiJiYmJiQGdtYWlsLmNvbSIsImlhdCI6MTU3Mzc5NzMzM30.mFJwAqSyi4QHPbdd_5p2R3s6ddR1OmM3eOFmipaRYRg"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json
+
+{"data":{"user":{"id":1,"username":"aaaa","email":"aaaa@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhYWFhIiwiZW1haWwiOiJhYWFhQGdtYWlsLmNvbSIsImlhdCI6MTU3Mzc5NzQ3NH0.qla4Pdl5KUa9vsHu3PcLbnRj-lDbN-l_gwrwUZHyOhY"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json
+
+{"data":{"user":{"id":3,"username":"cccc","email":"cccc@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJjY2NjIiwiZW1haWwiOiJjY2NjQGdtYWlsLmNvbSIsImlhdCI6MTU3Mzc5NzU3MX0.6iWW8e1bTktnss-oNu_6e-gJSSPkwHkeXeRqn7uE-C8"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json
+
+{"data":{"user":{"id":4,"username":"dddd","email":"dddd@gmail.com"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJkZGRkIiwiZW1haWwiOiJkZGRkQGdtYWlsLmNvbSIsImlhdCI6MTU3Mzc5NzY1OX0.BnkQLNIXEUq1EbK4sfLuFU29NKLKpxMIdHeF_R6XTvY"},"status":200,"statusText":"OK","headers":{"connection":"close","content-length":"243","content-type":"application/json
+
 //---------------------------------------------------------------------------------
 
 
