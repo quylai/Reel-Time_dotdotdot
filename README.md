@@ -16,5 +16,5 @@ This application will provide a user with a recommendation of a random recipe an
  
 - 5. My Saved Reels - This page displays all of the user's saved Reels. They can rate or delete them based on how their experience was.
  
-Live Heroku Link: [https://reel-time-app.herokuapp.com/]
+Live Heroku Link: [https://reel-time-app.herokuapp.com/]  
 Github src: https://github.com/seanbelverstone/Reel-Time
