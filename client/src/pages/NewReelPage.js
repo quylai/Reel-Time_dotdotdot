@@ -10,7 +10,6 @@ import SaveAndWatchButton from "../components/SaveAndWatchButton";
 import StreamingService from "../components/StreamingService";
 import { Button } from "reactstrap";
 import API from "../utils/API";
-import { parseDocCookie } from "../utils/parseDocCookie";
 
 var movie;
 var recipe;
@@ -19,153 +18,173 @@ var recipeResults;
 
 class NewReelPage extends Component {
     
-	constructor(props) {
-		super(props);
-		this.handleButtonClick = this.handleButtonClick.bind(this);
-		this.state = {isButtonClicked: false};
-		this.state.title = "New Reel + Yum Combo";
-	}
+    constructor(props) {
+        super(props);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.state = {isButtonClicked: false};
+        this.state.title = "New Reel + Yum Combo";
+    }
 
-	componentWillMount = () => {
-		this.getReel();
-	}
+    componentWillMount = () => {
+        this.getReel();
+    }
 
-	getReel = () => {
-		// Grabs the previously stored results from local storage
-		var currentMovie = localStorage.getItem("movie");
-		var currentRecipe = localStorage.getItem("recipe");
+    getReel = () => {
+        // Grabs the previously stored results from local storage
+        var currentMovie = localStorage.getItem("movie");
+        var currentRecipe = localStorage.getItem("recipe");
 
-		// Parses it from a string into a once again useable JSON and assigns it to a global variable
-		movie = JSON.parse(currentMovie);
-		recipe = JSON.parse(currentRecipe);
-	}
-	
-	handleButtonClick() {
-		this.setState({isButtonClicked: true});
-		let userIdInt = parseDocCookie("id");
-		
-		var reelObj = { 
-			movieTitle: movie.title,
-			movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-			movieSynopsis: movie.overview,
-			recipeTitle: recipe.recipe.label, 
-			recipeImage: recipe.recipe.image,
-			recipeLink: recipe.recipe.url,
-			rating: 1,
-			userId: userIdInt
-		};
+        // Parses it from a string into a once again useable JSON and assigns it to a global variable
+        movie = JSON.parse(currentMovie);
+        recipe = JSON.parse(currentRecipe);
+    }
+    
+    handleButtonClick() {
+        this.setState({isButtonClicked: true});
 
-		API.saveReel(reelObj.movieTitle, reelObj.movieImage, reelObj.movieSynopsis, reelObj.recipeTitle, reelObj.recipeImage, reelObj.recipeLink, reelObj.rating, reelObj.userId)
-		.then(results => {
-				console.log(results.data)
-				// atm, no post-stored process
-		})
-		.catch(err => {
-				console.log(err);
-		});
-	}
+        var allCookies = document.cookie.split(";");
+        var userId = allCookies[1].split("=");
+        var userIdValue = userId[1];
+        var userIdInt = parseInt(userIdValue);
+        
 
-	// This function is similar to the one on Dashboard form, however it reloads the page instead of navigating to the next one
-	reReel = () => {
-		this.movieSearch().then(() => {
-			this.recipeSearch().then(() => {
-				document.location.reload();
-			})
-		})
-	}
+        var reelObj = { 
+            movieTitle: movie.title,
+            movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+            movieSynopsis: movie.overview,
+            recipeTitle: recipe.recipe.label, 
+            recipeImage: recipe.recipe.image,
+            recipeLink: recipe.recipe.url,
+            rating: 1,
+            userId: userIdInt
+        };
 
-	movieSearch = () => {
-		// Grabs the genreId from cookies and plugs it into the API call
-		let movieValue = parseDocCookie("genre");
+        console.log(reelObj.userId);
 
-		return API.searchMovie(movieValue)
-			.then(results => {
+        API.saveReel(reelObj.movieTitle, reelObj.movieImage, reelObj.movieSynopsis, reelObj.recipeTitle, reelObj.recipeImage, reelObj.recipeLink, reelObj.rating, reelObj.userId)
+        .then(results => {
+            console.log(results.data)
+            // atm, no post-stored process
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 
-				movieResults = results.data.results;
+    // This function is similar to the one on Dashboard form, however it reloads the page instead of navigating to the next one
+    reReel = () => {
+        this.movieSearch().then(() => {
+          this.recipeSearch().then(() => {
+            document.location.reload();
+          })
+        })
+    }
 
-				// generates a random number
-				var randomNumber = Math.floor(Math.random() * 9) +1;
+    movieSearch = () => {
+        // Grabs the genreId from cookies and plugs it into the API call
+        var movieCookie = document.cookie.split(";");
+        var movieSplit = movieCookie[3].split("=");
+        var movieValue = movieSplit[1];
 
-				// grabs a result in a random position, parses it into a string then
-				// adds it to local storage.  this overwrites previous storage
-				var movieString = JSON.stringify(movieResults[randomNumber]);
-				localStorage.setItem("movie", movieString);
-			});
-	}
+        return API.searchMovie(movieValue)
+          .then(results => {
+    
+            movieResults = results.data.results;
+    
+            // generates a random number
+            var randomNumber = Math.floor(Math.random() * 9) +1;
+    
+            // grabs a result in a random position, parses it into a string then adds it to local storage.
+            // This overwrites previous storage
+            var movieString = JSON.stringify(movieResults[randomNumber]);
+            localStorage.setItem("movie", movieString);
+          });
+      }
 
 
-	recipeSearch = () => {
-		let cuisineValue = parseDocCookie("cuisineType");
+      recipeSearch = () => {
+        var cuisineCookie = document.cookie.split(";");
+        var cuisineSplit = cuisineCookie[4].split("=");
+        var cuisineValue = cuisineSplit[1];
 
-		return API.searchRecipe(cuisineValue)
-			.then(results => {
+        return API.searchRecipe(cuisineValue)
+          .then(results => {
+    
+            recipeResults = results.data.hits;
+    
+            var randomNumber = Math.floor(Math.random() * 9) +1;
+    
+            // grabs a result in a random position, parses it into a string then adds it to local storage.
+            // Local storage can only accept strings
+            var recipeString = JSON.stringify(recipeResults[randomNumber]);
+            localStorage.setItem("recipe", recipeString);
+          });
+      }
 
-				recipeResults = results.data.hits;
+    
+    render () {
 
-				var randomNumber = Math.floor(Math.random() * 9) +1;
+        const isButtonClicked = this.state.isButtonClicked;
+        let buttonDiv;
 
-				// grabs a result in a random position, parses it into a string then adds it to local storage.
-				// Local storage can only accept strings
-				var recipeString = JSON.stringify(recipeResults[randomNumber]);
-				localStorage.setItem("recipe", recipeString);
-			});
-	}
+        if (!isButtonClicked) {
+            buttonDiv = "";
+        } else {
+            buttonDiv = <StreamingService recipeLink={recipe.recipe.url}/>
+        }
 
-	render() {
+        return (
+            <div>
+            <NewReelCard>
+            <div className="page-header">
+                <Logo />
+                <div className="title-div">
+                    <Title title={this.state.title} />
+                    <UsernameDisplay />
+                </div>
+            </div>
 
-			const isButtonClicked = this.state.isButtonClicked;
-			let buttonDiv;
+            <div className="new-reel-page-container">
+                <NewReelList>
+                    <NewReelListItem
+                    // Movie data
+                    movieImg={movie.poster_path}
+                    movieTitle={movie.original_title}
+                    movieRating={movie.vote_average}
+                    movieReleaseDate={movie.release_date}
+                    description={movie.overview}
 
-			if (!isButtonClicked) {
-				buttonDiv = "";
-			} else {
-				buttonDiv = <StreamingService recipeLink={recipe.recipe.url}/>
-			}
+                    // Recipe data
+                    recipeImage={recipe.recipe.image}
+                    recipeTitle={recipe.recipe.label}
+                    recipeLink={recipe.recipe.url}
+                    recipeSource={recipe.recipe.source}
+                    recipeHealthLabel={recipe.recipe.healthLabels[0]}
+                    recipeCalories={recipe.recipe.calories}
+                    />
+                </NewReelList>
+            </div>
+            
+            <div className="streaming-buttons">
+                {buttonDiv}
+            </div>
 
-			return(
-				<div>
-					<NewReelCard>
-						<div className="page-header">
-							<Logo />
-							<div className="title-div">
-								<Title title={this.state.title} />
-								<UsernameDisplay />
-							</div>
-						</div>
+            <div className="button-section">
+                <BackToDashButton/>
 
-						<div className="new-reel-page-container">
-							<NewReelList>
-								<NewReelListItem
-									// Movie data
-									movieImg={movie.poster_path}
-									movieTitle={movie.original_title}
-									movieRating={movie.vote_average}
-									movieReleaseDate={movie.release_date}
-									description={movie.overview}
+                <Button onClick={this.reReel} id="reReel">
+                    RE-REEL
+                </Button>
 
-									// Recipe data
-									recipeImage={recipe.recipe.image}
-									recipeTitle={recipe.recipe.label}
-									recipeLink={recipe.recipe.url}
-									recipeSource={recipe.recipe.source}
-									recipeHealthLabel={recipe.recipe.healthLabels[0]}
-									recipeCalories={recipe.recipe.calories}
-								/>
-							</NewReelList>
-						</div>
-						
-						<div className="streaming-buttons">{buttonDiv}</div>
+                <SaveAndWatchButton
+                    onClick={this.handleButtonClick}/>
+            </div>
 
-						<div className="button-section">
-							<BackToDashButton/>
-							<Button onClick={this.reReel} id="reReel">RE-REEL</Button>
-							<SaveAndWatchButton onClick={this.handleButtonClick}/>
-						</div>
-
-					</NewReelCard>
-				</div>
-			);
-	}
+            </NewReelCard>
+            </div>
+        );
+    }
 }
+
 
 export default NewReelPage;

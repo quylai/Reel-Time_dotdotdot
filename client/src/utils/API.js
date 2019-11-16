@@ -1,52 +1,51 @@
 // API calls below.
 import axios from "axios";
-import { parseDocCookie } from "./parseDocCookie";
 
-// extracting token
-let userTokenValue = parseDocCookie("token");
+var allCookies = document.cookie.split(";");
+var userToken = allCookies[0].split("=");
+var userTokenValue = userToken[1];
 
 export default {
 
-	checkUser: function(username, password) {
-		return axios.post("/api/auth", {username, password}); 
-	},
+    checkUser: function(username, password) {
+        return axios.post("/api/auth", {username, password}) 
+    },
 
-	createUser: function(username, email, password) {
-		return axios.post("/api/users/", {username, email, password});
-	},
+    createUser: function(username, email, password) {
+        return axios.post("/api/users/", {username, email, password})
+    },
 
-	getReels: function(id) {
-		return axios.get(`/api/savedDates/${id}`, {
-			headers: {
-				'Authorization': `Bearer ${userTokenValue}`}});
-	},
+    getReels: function(id) {
+        return axios.get(`/api/savedDates/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${userTokenValue}`}})
+    },
 
-	saveReel: function(movieTitle, movieImage, movieSynopsis, recipeTitle, 
-										 recipeImage, recipeLink, rating, userId) {
-		return axios.post(`/api/savedDates/`, 
-			{ movieTitle, movieImage, movieSynopsis, recipeTitle, recipeImage,
-				recipeLink, rating, userId }, { 
-			headers: {
-				'Authorization': `Bearer ${userTokenValue}`}});
-	},
 
-	searchMovie: function(movie) {
-		return axios.get(`/api/movie/${movie}`,  {
-			headers: {
-				'Authorization': `Bearer ${userTokenValue}`}});
-	},
+    saveReel: function(movieTitle, movieImage, movieSynopsis, recipeTitle, recipeImage, recipeLink, rating, userId) {
+        return axios.post(`/api/savedDates/`, { movieTitle, movieImage, movieSynopsis, recipeTitle, recipeImage, recipeLink, rating, userId }, {
+            headers: {
+                'Authorization': `Bearer ${userTokenValue}`}})
+    },
 
-	searchRecipe: function(recipe) {
-		return axios.get(`/api/recipe/${recipe}`, { 
-			headers: {
-				'Authorization': `Bearer ${userTokenValue}`}});
-	},
+    searchMovie: function(movie) {
+        return axios.get(`/api/movie/${movie}`,  {
+            headers: {
+                'Authorization': `Bearer ${userTokenValue}`}})
+    },
 
-	deleteReel: function(id) {
-		return axios.delete(`/api/savedDates/${id}`, {
-			headers: {
-				'Authorization': `Bearer ${userTokenValue}`}});
-	}
+    searchRecipe: function(recipe) {
+        return axios.get(`/api/recipe/${recipe}`, { 
+            headers: {
+                'Authorization': `Bearer ${userTokenValue}`}})
+
+    },
+
+    deleteReel: function(id) {
+        return axios.delete(`/api/savedDates/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${userTokenValue}`}})
+    }
 }
 
 //on other routes apart from this one, grab from cookies and after data on the post, add {header: {auth: Bearer + ACCESS TOKEN}}
