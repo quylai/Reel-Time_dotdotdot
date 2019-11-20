@@ -29,31 +29,115 @@ sample cookie recorded, after login, @ /dashboard; use this for future reference
 
 
 
+//---------------------------------------------------------------------------------
+setup/using ubuntu in windows via wsl-2, and using vsc within it 
 
 
+- Set up your Node.js development environment directly on Windows
+    https://docs.microsoft.com/en-us/windows/nodejs/setup-on-windows
+	HOWEVER, as stated in the above guide, it's recommended to do development
+	via Windows Subsystem for Linux, and so
+	
+	Set up your Node.js development environment with WSL 2
+    https://docs.microsoft.com/en-us/windows/nodejs/setup-on-wsl2
 
+- to show current Linus distribution, in linux terminal type:
+	lsb_release -dc
 
+- to update ubuntu distro, in linux terminal type:
+	sudo apt update && sudo apt upgrade
 
+--------------------
+installing WSL 2
 
+- in PowerShell, type:
+	wsl -l
+  at the time of this installation, "Ubuntu-18.04" was installed,
+  therefore displayed after command processed
 
+- now tying "Ubuntu-18.04" to WSL-2, do command:
+	wsl --set-version Ubuntu-18.04 2
+  note:
+  - the command above will fail if some of windows-feedbacks got turn off;
+    to fix this: go to Start type "windows Insider Program" then click under caption
+    "Pick your Insider Program" there should be a button with context similar to 
+    that of "need to fix...", click on it
+  - also, change to
+      Fast
+      Be the first to give Microsoft feedback...
+  - now go to Start/Settings/Update&Security/WindowsUpdate
+    check for updates, then let it finish download/install
+    then, restart pc
 
+- do command:
+	wsl --list --verbose
+  a list appear, Ubuntu-18.04 should have number '2' in column "VERSION"
 
+--------------------
+installing nvm, node.js, and npm
 
+- open Ubuntu command line, installing cURL, do cmd:
+	sudo apt-get install curl
 
+- installing nvm,
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  to verify nvm installed, type
+	command -v nvm
+  output display "nvm", if you receive 'command not found' or no response at all, 
+  close your current terminal, reopen it, and try again
 
+- installing the current release of Node.js (for testing the newest feature 
+  improvements, but more likely to have issues):
+	nvm install node
 
+- installing the latest stable LTS release of Node.js (recommended):
+	nvm install --lts
 
+- verify that Node.js is installed and the currently default version
+	node --version
+  to display current installed version of npm
+	npm --version
 
+- To change the version of Node.js you would like to use for a project, create a 
+  new project directory mkdir NodeTest, and enter the directory cd NodeTest,
+  then enter nvm use node to switch to the Current version, or nvm use --lts to 
+  switch to the LTS version. You can also use the specific number for any 
+  additional versions you've installed, like nvm use v8.2.1. (To list all of the
+  versions of Node.js available, use the command: nvm ls-remote).
 
+- to install the lastest version of NVM, checkout out:
+    https://github.com/nvm-sh/nvm
+  use the curl-command instructed
 
+--------------------
+installing VS Code and the Remote-WSL Extension
 
+- to install VS Code (vsc), go to
+    https://code.visualstudio.com/
+  download and install it
 
+- open vsc, press [Ctrl + Shift + x] and search for "Remote - WSL"
+  select it and install
 
+--------------------
+open VSC under Ubuntu environment
 
+- open vsc, click the green button in lower-left-corner of vsc-window
+  the button is scribed "><", hover over it would have popup captions
+  "Open a remote window"
 
+- typing-blinker will translate to top of vsc-window with several options,
+  then choose
+    Remote-WSL: New Window
 
+- a new vsc-window appear, this instance of vsc is connected to Ubuntu;
+  evidently so if observe lower-left-corner, it should say something like:
+    WSL: Ubuntu-XX.xx
 
-
+- go to File/Add_Folder_to_Workspace,
+  again, typing-blinker will translate to top of vsc-window
+  now navigate to where the project/repo located within linux, click ok
+  enjoy...!
 
 
 //---------------------------------------------------------------------------------
