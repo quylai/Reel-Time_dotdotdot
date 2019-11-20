@@ -42,8 +42,10 @@ class NewReelPage extends Component {
 	
 	handleButtonClick() {
 		this.setState({isButtonClicked: true});
+		console.log("1-" + userIdInt);  //deb
 		let userIdInt = parseDocCookie("id");
 		
+		console.log("2-" + userIdInt);  //deb
 		var reelObj = { 
 			movieTitle: movie.title,
 			movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
@@ -54,6 +56,9 @@ class NewReelPage extends Component {
 			rating: 1,
 			userId: userIdInt
 		};
+
+		console.log("3-" + userIdInt);  //deb
+
 
 		API.saveReel(reelObj.movieTitle, reelObj.movieImage, reelObj.movieSynopsis, reelObj.recipeTitle, reelObj.recipeImage, reelObj.recipeLink, reelObj.rating, reelObj.userId)
 		.then(results => {
@@ -76,9 +81,7 @@ class NewReelPage extends Component {
 
 	movieSearch = () => {
 		// Grabs the genreId from cookies and plugs it into the API call
-		var movieCookie = document.cookie.split(";");
-		var movieSplit = movieCookie[3].split("=");
-		var movieValue = movieSplit[1];
+		let movieValue = parseDocCookie("genre");
 
 		return API.searchMovie(movieValue)
 			.then(results => {
@@ -97,9 +100,7 @@ class NewReelPage extends Component {
 
 
 	recipeSearch = () => {
-		var cuisineCookie = document.cookie.split(";");
-		var cuisineSplit = cuisineCookie[4].split("=");
-		var cuisineValue = cuisineSplit[1];
+		let cuisineValue = parseDocCookie("cuisineType");
 
 		return API.searchRecipe(cuisineValue)
 			.then(results => {

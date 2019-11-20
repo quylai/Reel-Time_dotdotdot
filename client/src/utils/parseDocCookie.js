@@ -1,20 +1,22 @@
 
 export const parseDocCookie = item => {
 
-	let start = document.cookie.search(item);
-	let arr = document.cookie.substring(start).split("\"");
-  let result;
+  let temp = JSON.stringify(document.cookie);
 
   if(item === "id") {
-
-    result = arr[1];
-    // removing ':' and ','
-    result = result.substring(1, result.length - 1)
-    // convert to int
-    result = parseInt(result);
+    console.log("**** getting id");  //debug
+    console.log(temp);  //debug
   }
-  else
-    result = arr[2];
 
-  return result;
+  // starting point to split cookie
+  let start = temp.search(item);
+
+  // partitioning cookie, beginning at searched-point
+  // at index 0 is cookie of interest
+	let cookiePieces = document.cookie.substring(start).split(';');
+  
+  // index 0 is key, 1 is value
+  let CookieKeyNValue = cookiePieces[0].split('=');
+
+  return CookieKeyNValue[1];
 }

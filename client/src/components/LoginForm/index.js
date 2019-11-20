@@ -25,17 +25,10 @@ class LoginForm extends Component {
 		API.checkUser(this.state.username, this.state.password)
 			.then(results => {
 
-				// temporarily comments out
-				//----
-				// document.cookie = `token = ${results.data.token}`;
-				// document.cookie = `id = ${results.data.user.id}`;
-				// document.cookie = `username = ${results.data.user.username}`;
-				//----
-				// use below instead to closely monitor variance of cookie
-				document.cookie = JSON.stringify(results);
-				
-				// at this point, user successfully logged; modding url to move
-				// app onto next stage
+				document.cookie = `token = ${results.data.token}`;
+				document.cookie = `id = ${results.data.user.id}`;
+				document.cookie = `username = ${results.data.user.username}`;
+
 				window.location.pathname = "/dashboard"; 
 			})
 			.catch(err => this.setState(
