@@ -141,6 +141,23 @@ open VSC under Ubuntu environment
 
 
 //---------------------------------------------------------------------------------
+in Windows 10, when setting up nvm-windows/node.js/npm - "node-gyp" was excluded
+which causes gazillions errors:
+    gyp ERR! find Python
+
+Resolutions:
+  details are at:
+    https://github.com/nodejs/node-gyp#installation
+  in summary:
+    - in vsc gitbash terminal do
+        npm install -g node-gyp
+    - get on PowerShell, run as admin, do
+        npm install --global --production windows-build-tools
+      make sure that it's finish, meaning you should be able to run another cmd
+      *got freeze up on first attempt, close that PowerShell, then rerun cmd
+
+
+//---------------------------------------------------------------------------------
 12345678901234567890123456789012345678901234567890123456789012345678901234567890123
          1         2         3         4         5         6         7         8
 /*---------------------------------------------------------------------------------
