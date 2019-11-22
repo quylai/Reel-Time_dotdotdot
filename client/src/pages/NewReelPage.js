@@ -33,20 +33,17 @@ class NewReelPage extends Component {
 		var currentMovie = localStorage.getItem("movie");
 		var currentRecipe = localStorage.getItem("recipe");
 
-		// Parses it from a string into a once again useable JSON and assigns it to a global variable
+		// Parses it from a string into a once again useable JSON 
+		// and assigns it to a global variable
 		movie = JSON.parse(currentMovie);
 		recipe = JSON.parse(currentRecipe);
 
 		// getting database user-id
 		userIdInt = parseDocCookie("id=");
-		console.log("inside getReel function, userIdInt is");
-		console.log(userIdInt);
 	}
 	
 	handleButtonClick() {
 		this.setState({isButtonClicked: true});
-		console.log("********" + userIdInt);  //deb
-		// let userIdInt = parseDocCookie("id");
 		
 		var reelObj = { 
 			movieTitle: movie.title,
