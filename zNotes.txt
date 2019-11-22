@@ -158,20 +158,11 @@ Resolutions:
 
 
 //---------------------------------------------------------------------------------
-rewriting of package.json
-(apply it after sorting out heroku error:
-  react-dom.production.min.js:4636 SyntaxError: 
-  Unexpected token u in JSON at position 0
-at the moment)
 
-front:
-@fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome moment moment-timezone react react-copy-to-clipboard react-dom react-moment react-router-dom react-select react-star-rating-component react-strap react-video-cover reactstrap redux react-scripts
-
-back:
-axios bcrypt bootstrap dotenv esm express if-env mysql2 passport passport-jwt passport-local sequelize
 
 
 //---------------------------------------------------------------------------------
+
 
 
 
