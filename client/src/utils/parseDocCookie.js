@@ -2,7 +2,7 @@
 // this will extract a particular data in document.cookie
 export const parseDocCookie = item => {
 
-  console.log("**************** item" + item);
+  console.log("**************** item-" + item);
 
   // convert document.cookie into string for processing
   let dcStr = JSON.stringify(document.cookie);
