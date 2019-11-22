@@ -4,7 +4,7 @@ import { parseDocCookie } from "../../utils/parseDocCookie"
 
 const UsernameDisplay = () => {
 
-	let uName = parseDocCookie("username");
+	let uName = parseDocCookie("username=");
 	return(
 		<div>
 			<div className="username-text">Hi, {uName}!</div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { parseDocCookie } from "./parseDocCookie";
 
 // extracting token
-let userTokenValue = parseDocCookie("token");
+let userTokenValue = parseDocCookie("token=");
 
 export default {
 

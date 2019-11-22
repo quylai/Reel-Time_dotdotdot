@@ -16,6 +16,7 @@ var movie;
 var recipe;
 var movieResults;
 var recipeResults;
+var userIdInt;
 
 class NewReelPage extends Component {
     
@@ -24,9 +25,6 @@ class NewReelPage extends Component {
 		this.handleButtonClick = this.handleButtonClick.bind(this);
 		this.state = {isButtonClicked: false};
 		this.state.title = "New Reel + Yum Combo";
-	}
-
-	componentWillMount = () => {
 		this.getReel();
 	}
 
@@ -38,14 +36,18 @@ class NewReelPage extends Component {
 		// Parses it from a string into a once again useable JSON and assigns it to a global variable
 		movie = JSON.parse(currentMovie);
 		recipe = JSON.parse(currentRecipe);
+
+		// getting database user-id
+		userIdInt = parseDocCookie("id=");
+		console.log("inside getReel function, userIdInt is");
+		console.log(userIdInt);
 	}
 	
 	handleButtonClick() {
 		this.setState({isButtonClicked: true});
-		console.log("1-" + userIdInt);  //deb
-		let userIdInt = parseDocCookie("id");
+		console.log("********" + userIdInt);  //deb
+		// let userIdInt = parseDocCookie("id");
 		
-		console.log("2-" + userIdInt);  //deb
 		var reelObj = { 
 			movieTitle: movie.title,
 			movieImage: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
@@ -57,13 +59,9 @@ class NewReelPage extends Component {
 			userId: userIdInt
 		};
 
-		console.log("3-" + userIdInt);  //deb
-
-
 		API.saveReel(reelObj.movieTitle, reelObj.movieImage, reelObj.movieSynopsis, reelObj.recipeTitle, reelObj.recipeImage, reelObj.recipeLink, reelObj.rating, reelObj.userId)
 		.then(results => {
-				console.log(results.data)
-				// atm, no post-stored process
+				console.log(results.data);
 		})
 		.catch(err => {
 				console.log(err);
