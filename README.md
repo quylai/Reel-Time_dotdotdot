@@ -15,6 +15,8 @@ This application will provide a user with a recommendation of a random recipe an
 - 4. Create Reel - Provides a recommendation of a movie and a recipe. The user can choose 'Re-Reel', which   generates another random selection based on the same criteria as chosen before. If they are happy with 		the results, they can click 'Save + Watch' which saves the choice to the database and offers up links to 	some video streaming providers. Finally, there is a button that allows the user to return to the 			dashboard.
  
 - 5. My Saved Reels - This page displays all of the user's saved Reels. They can rate or delete them based on how their experience was.
+
+Heroku WIP rev: https://reel-time-dotdotdot-12345.herokuapp.com/
  
-Live Heroku Link: [https://reel-time-app.herokuapp.com/]  
+Heroku src: https://reel-time-app.herokuapp.com/  
 Github src: https://github.com/seanbelverstone/Reel-Time
